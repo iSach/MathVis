@@ -13,7 +13,7 @@ plt.rcParams.update({
     'text.latex.preamble': r'\usepackage{amsfonts}'
 })
 
-PARAMS = np.linspace(-4.0, 4.0, 60*10)
+PARAMS = np.linspace(-0.75, 0.75, 60*15)
 
 @job(
     array=len(PARAMS),
