@@ -51,7 +51,7 @@ def draw_plot(i: int):
     ax.set_aspect('equal')
     ax.set_title('$8.0x^4+(1.0t_2^4-1.0it_2^2-1.0)x^2+1.0t_1^4+1.0t_1^2-1.0it_1-1.0$ \n' +  r'$t_1,t_2 \in \mathbb{C}, \ \ \ |t_1|=|t_2|=1$', fontsize=50)
     
-    plt.savefig('temp/polyroots_{i}.png', dpi=300, bbox_inches='tight', pad_inches=0.0)
+    plt.savefig(f'temp/polyroots_{i}.png', dpi=300, bbox_inches='tight', pad_inches=0.0)
 
 @after(draw_plot)
 @job(cpus=16, ram='32GB', time='1:00:00')
