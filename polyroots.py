@@ -51,12 +51,12 @@ def draw_plot(i: int):
     ax.set_aspect('equal')
     ax.set_title('$8.0x^4+(1.0t_2^4-1.0it_2^2-1.0)x^2+1.0t_1^4+1.0t_1^2-1.0it_1-1.0$ \n' +  r'$t_1,t_2 \in \mathbb{C}, \ \ \ |t_1|=|t_2|=1$', fontsize=50)
     
-    plt.savefig(f'temp/polyroots_{i}.png', dpi=300, bbox_inches='tight', pad_inches=0.0)
+    plt.savefig(f'temp/polyroots_{i}.png', dpi=50)
 
 @after(draw_plot)
 @job(cpus=16, ram='32GB', time='1:00:00')
 def draw_video():
-    os.system('ffmpeg -y -r 30 -i temp/polyroots_%d.png -c:v libx264 -vf fps=30 -pix_fmt yuv420p polyroots.mp4')
+    os.system('ffmpeg -y -r 30 -i temp/polyroots_%d.png polyroots.mp4')
 
 if __name__ == '__main__':
     os.makedirs('temp', exist_ok=True)
