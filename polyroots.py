@@ -13,7 +13,7 @@ plt.rcParams.update({
     'text.latex.preamble': r'\usepackage{amsfonts}'
 })
 
-PARAMS = np.linspace(0.01, 15.0, 30*10)
+PARAMS = np.linspace(-4.0, 4.0, 60*10)
 
 @job(
     array=len(PARAMS),
@@ -54,9 +54,13 @@ def draw_plot(i: int):
     plt.savefig(f'temp/polyroots_{i}.png', dpi=50)
 
 @after(draw_plot)
-@job(cpus=16, ram='32GB', time='1:00:00')
+@job(
+    cpus=16, 
+    ram='32GB', 
+    time='1:00:00'
+)
 def draw_video():
-    os.system('ffmpeg -y -r 30 -i temp/polyroots_%d.png polyroots.mp4')
+    os.system('ffmpeg -y -r 60 -i temp/polyroots_%d.png polyroots.mp4')
 
 if __name__ == '__main__':
     os.makedirs('temp', exist_ok=True)
